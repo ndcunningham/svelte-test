@@ -2,19 +2,19 @@
   "compilerOptions": {
     "rootDir": ".",
     "sourceMap": true,
-    "declaration": false,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es2015",
-    "module": "commonjs",
+    "useDefineForClassFields": true,
+    "target": "esnext",
+    "module": "ESNext",
     "lib": ["es2020", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "svelet-test": ["src/index.ts"]
+      "svelet-test": ["src/main.ts"]
     },
     "types": ["vitest"]
   },
@@ -22,7 +22,7 @@
   "include": [],
   "references": [
     {
-      "path": "./tsconfig.lib.json"
+      "path": "./tsconfig.app.json"
     },
     {
       "path": "./tsconfig.spec.json"

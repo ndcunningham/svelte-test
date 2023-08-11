@@ -2,16 +2,40 @@
   "name": "svelet-test",
   "$schema": "node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "src",
-  "projectType": "library",
+  "projectType": "application",
   "targets": {
     "build": {
-      "executor": "@nx/js:tsc",
+      "executor": "@nx/vite:build",
       "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/svelet-test",
-        "main": "./src/index.ts",
-        "tsConfig": "./tsconfig.lib.json",
-        "assets": ["*.md"]
+        "outputPath": "dist/svelte-test",
+        "svelteConfig": "./svelte.config.js"
+      },
+      "configurations": {
+        "development": {
+          "mode": "development"
+        },
+        "production": {
+          "mode": "production"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/vite:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "svelte-test:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "svelte-test:build:development",
+          "hmr": true
+        },
+        "production": {
+          "buildTarget": "svelte-test:build:production",
+          "hmr": false
+        }
       }
     },
     "lint": {
